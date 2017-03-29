@@ -1,0 +1,25 @@
+
+# built application files
+*.apk
+*.ap_
+
+# Java class files
+*.class
+
+# generated files
+bin/
+gen/
+logs/
+proguard_cache/
+target/
+tmp/
+
+# Local configuration file (sdk path, etc)
+local.properties
+.cache/
+.classpath
+.project
+.settings/
+*.iml
+.idea/
+local.sbt
