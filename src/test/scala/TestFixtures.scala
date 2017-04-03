@@ -35,11 +35,8 @@ object TestFixtures {
 
     /**Loops**/
     /*Correct*/
-    val simpleLoop = "while (y) {
-                        r = r + x;
-                        y = y - 1;
-                      }"
+    val simpleLoop = "while (y) { r = r + x; y = y - 1; }"
 
     /*Incorrect*/
-    
+
 }
