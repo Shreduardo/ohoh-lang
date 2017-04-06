@@ -20,11 +20,13 @@ object MiniJSParser extends JavaTokenParsers {
                                        )
 
     //TODO: Add support for >, < consturcts
+    //     expr + erm = operator??
     def expr: Parser[Statement] = (
         term ~ "+" ~ term ^^ { case l ~ _ ~ r => Plus(l, r) }
         | term ~ "-" ~ term ^^ { case l ~ _ ~ r => Minus(l, r) }
         | term
         | factor
+        | repsep(expr, " ")
     )
 
     //TODO: Add support for % constructs
