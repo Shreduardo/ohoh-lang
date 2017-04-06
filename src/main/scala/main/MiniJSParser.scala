@@ -2,9 +2,24 @@ package luccs.proglang.p3a.scala
 
 import scala.util.parsing.combinator._ //{JavaTokenParsers, RegexParsers}
 
-object MiniJSParser extends JavaTokenParsers with RegexParsers {
+object MiniJSParser extends JavaTokenParsers {
 
 
+    // def statement: Parser[Statement] = (
+    //     ident ~ "=" ~ expr ^^ { case s ~ _ ~ r => Assignment(Variable(s), r) }
+    //     | "while" ~ "(" ~> expr ~ ")" ~ statement ^^ { case C ~ _ ~ b => While(c, b) }
+    //     | "{" ~> repsep(statement, ",") <~ "}" ^^ { case ss => Sequence(ss: _*) }
+    // )
+
+    def statement: Parser[Statement] = ( expr |
+                                         term |
+                                         factor |
+                                         block |
+                                         loop |
+                                         assignment
+                                       )
+
+    //TODO: Add support for >, < consturcts
     def expr: Parser[Statement] = (
         term ~ "+" ~ term ^^ { case l ~ _ ~ r => Plus(l, r) }
         | term ~ "-" ~ term ^^ { case l ~ _ ~ r => Minus(l, r) }
@@ -12,6 +27,7 @@ object MiniJSParser extends JavaTokenParsers with RegexParsers {
         | factor
     )
 
+    //TODO: Add support for % constructs
     def term: Parser[Statement] = (
         factor ~ "*" ~ factor ^^ { case l ~ _ ~ r => Mult(l, r) }
         | factor ~ "/" ~ factor ^^ { case l ~ _ ~ r => Div(l, r) }
@@ -24,16 +40,23 @@ object MiniJSParser extends JavaTokenParsers with RegexParsers {
         | "(" ~> expr <~ ")" ^^ { case e => e }
     )
 
-    //Split these into three different combinators
-      def statement: Parser[Statement] = (
-          ident ~ "=" ~ expr ^^ { case s ~ _ ~ r => Assignment(Variable(s), r) }
-          | "while" ~ "(" ~> expr ~ ")" ~ statement ^^ { case g ~ _ ~ b => While(g, b) }
-          | "{" ~> repsep(statement, ",") <~ "}" ^^ { case ss => Sequence(ss: _*) }
-      )
+    def block: Parser[Statement] = (
+        "{" ~> repsep(statement, " ") <~ "}" ^^ {case ss => Sequence(ss: _*)}
+    )
 
-      def assignment: Parser[Statement] = (
+    //TODO: add else constructs
+    def conditional: Parser[Statement] = (
+        "if" ~ "(" ~> expr ~ ")" ~ block ^^ { case g ~ _ ~ b => Condition(g, b)}
+    )
 
-      )
+    //TODO: add 'for' consturcts
+    def loop: Parser[Statement] = (
+        "while" ~ "(" ~> expr ~ ")" ~ block ^^ { case g ~ _ ~ b => While(g, b)}
+    )
+
+    def assignment: Parser[Statement] = (
+        ident ~ "=" ~ expr ^^ {case s ~ _ ~ r => Assignment(Variable(s), r)}
+    )
 
 }
     // def expression: Parser[Statement] = term~rep("+"~term | "-"~term)

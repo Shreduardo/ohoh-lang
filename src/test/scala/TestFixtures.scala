@@ -4,38 +4,44 @@ object TestFixtures {
 
     /**Assignments**/
     /*Correct*/
-    val basicAssignment = "x = 5";
-    val repAssignment = "x = 5 ; y = 7"
-    val assignmentToExpression = "x = ((1 + y2) - (3 * y4)) / 5;"
+    val basicAssignment = Assignment(Variable("x"), Constant(5))
+    val basicAssignmentString = "x = 5"
+
+
+    val repAssignmentString = "x = 5  y = 7"
+
+    val assignmentToExpressionString = "x = ((1 + y2) - (3 * y4)) / 5"
 
     /*Incorect*/
 
 
     /**Expressions**/
     /*Correct*/
-    val complexExpression = "((1 + y2) - (3 * y4)) / 5;"
+
+    val complexExpressionString = "((1 + y2) - (3 * y4)) / 5"
 
     /*Incorrect*/
 
 
     /**Blocks**/
     /*Correct*/
-    val complexBlock = "{ r = r + x; y = y + 1 ; }"
+
+    val complexBlockString = "{ r = r + x  y = y + 1 }"
 
     /*Incorrect*/
 
 
     /**Conditionals**/
     /*Correct*/
-    val basicConditional = "if (1) { x = 2; }"
-    val simpleCondiitonal = "if (1) { x = 2; } else { x = 3; }"
-    val conditionalRepExpressionBlock = "if (4) { r = r + x; y = y + 1; }"
+    val basicConditionalString = "if (1) { x = 2 }"
+    val simpleCondiitonalString = "if (1) { x = 2 } else { x = 3 }"
+    val conditionalRepExpressionBlockString = "if (4) { r = r + x  y = y + 1 }"
 
     /*Incorrect*/
 
     /**Loops**/
     /*Correct*/
-    val simpleLoop = "while (y) { r = r + x; y = y - 1; }"
+    val simpleLoopString = "while (y) { r = r + x  y = y - 1 }"
 
     /*Incorrect*/
 
