@@ -7,7 +7,7 @@ abstract class BinaryStatement(left: Statement, right: Statement) extends Statem
     require(left != null)
     require(right != null)
 }
-
+//WE NEED TO ADD SOME STATEMENTS.  LOOK AT BEHAVIORS
 /*Effect-less Statements*/
 case class Constant(value: Int) extends Statement
 case class Plus(left: Statement, right: Statement) extends BinaryStatement(left, right)

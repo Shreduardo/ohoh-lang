@@ -5,6 +5,7 @@ import sun.tools.jstat.Operator
 
 object Behaviors {
 
+  //Add the cases that are commented out to our statements
   def toFormattedString(prefix: String)(e: Statement): String = e match {
     case Constant(c) => prefix + c.toString
     //case UMinus(r)   => buildUnaryExprString(prefix, "UMinus", toFormattedString(prefix + INDENT)(r))
@@ -44,6 +45,7 @@ object Behaviors {
   val EOL = scala.util.Properties.lineSeparator
   val INDENT = ".."
 
+  //Maybe wrong, but probably not
   def buildUnparsedString(prefix: String, operator: String, leftString: String, rightString: String) = {
     val result = new StringBuilder(prefix)
     result.append("(")
@@ -53,7 +55,7 @@ object Behaviors {
     result.append(")")
     result.toString
   }
-
+//UNFINISHED BELOW
   def unparser(prefix: String, nodeString: String, leftString: String, rightString: String) = {
     case Constant(c) => prefix + c.toString()
     case Plus(l,r) => buildUnparsedString()

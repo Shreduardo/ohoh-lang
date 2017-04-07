@@ -6,6 +6,7 @@ import TestFixtures._
 // object MainMiniJSParser extends App {
 //     TestMiniJSParser
 // }
+//CLEARLY UNFINISHED
 class TestBehaviors extends FunSuite {
 
   val behaviorAssignment = Behaviors.toFormattedString("")(complex1)
