@@ -24,4 +24,4 @@ case class Sequence(statements: Statement*) extends Statement {
 }
 case class Condition(guard: Statement, body: Statement) extends BinaryStatement(guard, body)
 case class While(guard: Statement, body: Statement) extends BinaryStatement(guard, body)
-case class Assignment(left: Statement, right: Statement) extends BinaryStatement(left, right)
+case class Assignment(left: Variable, right: Statement) extends BinaryStatement(left, right)

@@ -26,7 +26,7 @@ object MiniJSParser extends JavaTokenParsers {
         | term ~ "-" ~ term ^^ { case l ~ _ ~ r => Minus(l, r) }
         | term
         | factor
-        | repsep(expr, " ")
+//        | repsep(expr, " ")
     )
 
     //TODO: Add support for % constructs
@@ -57,7 +57,8 @@ object MiniJSParser extends JavaTokenParsers {
     )
 
     def assignment: Parser[Statement] = (
-        ident ~ "=" ~ expr ^^ {case s ~ _ ~ r => Assignment(Variable(s), r)}
+        ???
+//        ident ~ "=" ~ expr ^^ {case s ~ _ ~ r => Assignment(Variable(s), r)}
     )
 
 }

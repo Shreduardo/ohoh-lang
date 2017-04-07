@@ -2,6 +2,38 @@ package luccs.proglang.p3a.scala
 
 object TestFixtures {
 
+    /**From Expressions**/
+    /*Correct*/
+    val complex1 =
+      Div(
+        Minus(
+          Plus(
+            Constant(1),
+            Constant(2)
+          ),
+          Mult(
+            Constant(3),
+            Constant(4)
+          )
+        ),
+        Constant(5)
+      )
+    val complex1String = "((1 + 2) - (3 * 4)) / 5"
+    val complex1TreeString =
+      """Div(
+        |..Minus(
+        |....Plus(
+        |......1,
+        |......2
+        |....),
+        |....Mult(
+        |......3,
+        |......4
+        |....)
+        |..),
+        |..5
+        |)""".stripMargin
+
     /**Assignments**/
     /*Correct*/
     val basicAssignment = Assignment(Variable("x"), Constant(5))
@@ -29,6 +61,7 @@ object TestFixtures {
                                             Constant(5)
                                         )
                                        )
+
     val assignmentToExpressionString = "x = ((1 + y2) - (3 * y4)) / 5"
 
     /*Incorect*/
