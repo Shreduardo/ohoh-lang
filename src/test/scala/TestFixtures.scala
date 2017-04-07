@@ -37,16 +37,43 @@ object TestFixtures {
     /**Expressions**/
     /*Correct*/
 
-    val complexExpression = Div(Minus(Plus(Constant(1), Variable(y2)), Mult(Constant(3), Variable(y4))), Constant(5))
+    val complexExpression = Div(
+                                Minus(
+                                    Plus(
+                                        Constant(1),
+                                        Variable("y2")
+                                    ),
+                                    Mult(
+                                        Constant(3),
+                                        Variable("y4")
+                                    )
+                                ),
+                                Constant(5)
+                            )
     val complexExpressionString = "((1 + y2) - (3 * y4)) / 5"
-    val
 
     /*Incorrect*/
 
 
     /**Blocks**/
     /*Correct*/
-    val complexBlock
+    val complexBlock =
+    Sequence(
+        Assignment(
+            Variable("r"),
+            Plus(
+                Variable("r"),
+                Variable("s")
+            )
+        ),
+        Assignment(
+            Variable("y"),
+            Plus(
+                Variable("y"),
+                Constant(1)
+            )
+        )
+    )
     val complexBlockString = "{ r = r + x  y = y + 1 }"
 
     /*Incorrect*/
