@@ -8,38 +8,18 @@ import TestFixtures._
 // }
 class TestMiniJSParser extends FunSuite {
 
+    /* Assignments */
     val parsedBasicAssignment = MiniJSParser.parseAll(MiniJSParser.assignment, basicAssignmentString)
     test("Basic assignment Parser") { assert(parsedBasicAssignment.get === basicAssignment) }
 
-    val parsedRepAssignment = MiniJSParser.parseAll(MiniJSParser.assignment, repAssignmentString)
-    test("Repeated assignment Parser") { assert(parsedRepAssignment.get === repAssignment) }
+    val parsedAssignmentToExpression = MiniJSParser.parseAll(MiniJSParser.assignment, assignmentToExpressionString)
+    test("Assignment to Expression Parser") { assert(parsedAssignmentToExpression.get === assignmentToExpression)}
 
+
+    /* Expressions */
+    val parsedComplexExpression = MiniJSParser.parseAll(MiniJSParser.expr, complexExpressionString)
+    test("Complex Expression") { assert(parsedComplexExpression.get === complexExpression) }
+
+    /* TODO: REP */
 
 }
-
-// val repAssignmentString = "x = 5  y = 7"
-//
-// val repAssignment = Sequence(
-//                             Assignment(Variable("x"), Constant(5)),
-//                             Assignment(Variable("y"), Constant(7))
-//                           )
-//
-//
-// val assignmentToExpressionString = "x = ((1 + y2) - (3 * y4)) / 5"
-//
-// val assingmentToExpressionString = Assignment(
-//                                     Variable("x"),
-//                                     Div(
-//                                         Minus(
-//                                             Plus(
-//                                                 Constant(1),
-//                                                 Variable("y2")
-//                                             ),
-//                                             Mult(
-//                                                 Constant(3),
-//                                                 Variable("y4")
-//                                             )
-//                                         ),
-//                                         Constant(5)
-//                                     )
-//                                    )
