@@ -7,8 +7,7 @@ object TestFixtures {
     val basicAssignmentString = "x = 5"
     val basicAssignment = Assignment(Variable("x"), Constant(5))
 
-    /* TODO: REP */
-    val repAssignmentString = "x = 5  y = 7"
+    val repAssignmentString = "x = 5 y = 7"
     val repAssignment = Sequence(
                                 Assignment(Variable("x"), Constant(5)),
                                 Assignment(Variable("y"), Constant(7))
@@ -74,7 +73,7 @@ object TestFixtures {
     /**Blocks**/
     /*Correct*/
     /* TODO: REP */
-    val complexBlockString = "{ r = r + x  y = y + 1 }"
+    val complexBlockString = "{ r = r + x y = y + 1 }"
     val complexBlock = Sequence(
                             Assignment(
                                 Variable("r"),
