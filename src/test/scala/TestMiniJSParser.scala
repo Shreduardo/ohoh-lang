@@ -28,28 +28,12 @@ class TestMiniJSParser extends FunSuite {
 
     /* Block */
     val parsedComplexBlock = MiniJSParser.parseAll(MiniJSParser.block, complexBlockString)
-    print(parsedComplexBlock.get)
     test("Complex Block") { assert(parsedComplexBlock.get === complexBlock)}
+
+
+
+    /* Loop */
+    
     /* TODO: REP */
 
 }
-
-
-//
-// val complexBlockString = "{ r = r + x  y = y + 1 }"
-// val complexBlock = Sequence(
-//                         Assignment(
-//                             Variable("r"),
-//                             Plus(
-//                                 Variable("r"),
-//                                 Variable("s")
-//                             )
-//                         ),
-//                         Assignment(
-//                             Variable("y"),
-//                             Plus(
-//                                 Variable("y"),
-//                                 Constant(1)
-//                             )
-//                         )
-//                     )

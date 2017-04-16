@@ -1,6 +1,6 @@
 package luccs.proglang.p3a.scala
 
-import scala.util.parsing.combinator._ //{JavaTokenParsers, RegexParsers}
+import scala.util.parsing.combinator._ //JavaTokenParsers
 
 object MiniJSParser extends JavaTokenParsers {
 
@@ -39,14 +39,16 @@ object MiniJSParser extends JavaTokenParsers {
     )
 
     def block: Parser[Statement] = (
-        // "{" ~> repeated <~ "}" ^^ {case r => r}
-        // | "{" ~> expr <~ "}" ^^ {case e => e}
-        // | "{" ~> loop <~ "}" ^^ {case b => b}
-        // | "{" ~> assignment <~ "}" ^^ {case a => a}
-
-        "{" ~> rep(statement) <~ "}" ^^ {case s => Sequence(s: _*)}
-        | "{" ~> statement <~ "}" ^^ {case s => s}
+        "{" ~> statement <~ "}" ^^ {case s => s}
+        | "{" ~> rep(statement) <~ "}" ^^ { case r => Sequence(r: _*) }
     )
+
+    // "{" ~> repeated <~ "}" ^^ {case r => r}
+    // | "{" ~> expr <~ "}" ^^ {case e => e}
+    // | "{" ~> loop <~ "}" ^^ {case b => b}
+    // | "{" ~> assignment <~ "}" ^^ {case a => a}
+
+    //"{" ~> repeated <~ "}" ^^ {case  r => r}
 
     /* TODO: add else constructs */
     // def conditional: Parser[Statement] = (

@@ -79,7 +79,7 @@ object TestFixtures {
                                 Variable("r"),
                                 Plus(
                                     Variable("r"),
-                                    Variable("s")
+                                    Variable("x")
                                 )
                             ),
                             Assignment(
