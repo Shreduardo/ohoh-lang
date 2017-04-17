@@ -14,6 +14,7 @@ case class Plus(left: Statement, right: Statement) extends BinaryStatement(left,
 case class Minus(left: Statement, right: Statement) extends BinaryStatement(left, right)
 case class Mult(left: Statement, right: Statement) extends BinaryStatement(left, right)
 case class Div(left: Statement, right: Statement) extends BinaryStatement(left, right)
+case class Mod(left: Statement, right: Statement) extends BinaryStatement(left, right)
 
 /*Imperative Statements*/
 case class Variable(name: String) extends Statement {

@@ -29,6 +29,7 @@ object MiniJSParser extends JavaTokenParsers {
     def term: Parser[Statement] = (
         factor ~ "*" ~ factor ^^ { case l ~ _ ~ r => Mult(l, r) }
         | factor ~ "/" ~ factor ^^ { case l ~ _ ~ r => Div(l, r) }
+        | factor ~ "%" ~ factor ^^ { case l ~ _ ~ r => Mod(l, r) }
         | factor
     )
 

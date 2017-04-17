@@ -13,7 +13,7 @@
 //     case Minus(l, r) => buildExprString(prefix, "Minus", toFormattedString(prefix + INDENT)(l), toFormattedString(prefix + INDENT)(r))
 //     case Mult(l, r) => buildExprString(prefix, "Mult", toFormattedString(prefix + INDENT)(l), toFormattedString(prefix + INDENT)(r))
 //     case Div(l, r)   => buildExprString(prefix, "Div", toFormattedString(prefix + INDENT)(l), toFormattedString(prefix + INDENT)(r))
-//     //case Mod(l, r)   => buildExprString(prefix, "Mod", toFormattedString(prefix + INDENT)(l), toFormattedString(prefix + INDENT)(r))
+//     case Mod(l, r)   => buildExprString(prefix, "Mod", toFormattedString(prefix + INDENT)(l), toFormattedString(prefix + INDENT)(r))
 //   }
 //
 //   def toFormattedString(e: Statement): String = toFormattedString("")(e)
