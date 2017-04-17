@@ -43,18 +43,12 @@ object MiniJSParser extends JavaTokenParsers {
         | "{" ~> rep(statement) <~ "}" ^^ { case r => Sequence(r: _*) }
     )
 
-    // "{" ~> repeated <~ "}" ^^ {case r => r}
-    // | "{" ~> expr <~ "}" ^^ {case e => e}
-    // | "{" ~> loop <~ "}" ^^ {case b => b}
-    // | "{" ~> assignment <~ "}" ^^ {case a => a}
-
-    //"{" ~> repeated <~ "}" ^^ {case  r => r}
 
     /* TODO: add else constructs */
-    // def conditional: Parser[Statement] = (
-    //     "if" ~ "(" ~ expr ~ ")" ~ block ~ None ^^ { case g ~ _ ~ b => Condition(g, b, None)}
-    //     | "if" ~ "(" ~ expr ~ ")" ~ block ~ "else" ~ block ^^ {case g ~ _ ~ b1 ~ _ ~ b2 => Condition(g, b1, Some(b2)) }
-    // )
+    def conditional: Parser[Statement] = (
+        "if" ~ "(" ~ expr ~ ")" ~ block ^^ { case _ ~ _ ~ g ~ _ ~ b => Condition(g, b, None)}
+        | "if" ~ "(" ~ expr ~ ")" ~ block ~ "else" ~ block ^^ {case _ ~ _ ~ g ~ _ ~  b1 ~ _ ~ b2 => Condition(g, b1, Some(b2)) }
+    )
 
     /* TODO: add 'for' consturcts */
     def loop: Parser[Statement] = (

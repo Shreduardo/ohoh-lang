@@ -98,29 +98,29 @@ object TestFixtures {
     /**Conditionals**/
     /*Correct*/
 
-    // val basicConditionalString = "if (1) { x = 2 }"
-    // val basicConditional = Conditional(
-    //                             Constant(1),
-    //                             Assignment(
-    //                                 Variable("x"),
-    //                                 Constant(2)
-    //                             ),
-    //                             NiL
-    //                         )
-    //
-    // val simpleCondiitonalString = "if (1) { x = 2 } else { x = 3 }"
-    // val simpleConditional = Conditional(
-    //                             Constant(1),
-    //                             Assignment(
-    //                                 Variable("x"),
-    //                                 Constant(2)
-    //                             ),
-    //                             Assignment(
-    //                                 Variable("x"),
-    //                                 Constant(3)
-    //                             )
-    //                         )
-    //
+    val basicConditionalString = "if (1) { x = 2 }"
+    val basicConditional = Condition(
+                                Constant(1),
+                                Assignment(
+                                    Variable("x"),
+                                    Constant(2)
+                                ),
+                                None
+                            )
+
+    val simpleConditionalString = "if (1) { x = 2 } else { x = 3 }"
+    val simpleConditional = Condition(
+                                Constant(1),
+                                Assignment(
+                                    Variable("x"),
+                                    Constant(2)
+                                ),
+                                Option(Assignment(
+                                    Variable("x"),
+                                    Constant(3)
+                                ))
+                            )
+
     // /* TODO: REP */
     // val conditionalRepExpressionBlockString = "if (4) { r = r + x  y = y + 1 }"
 

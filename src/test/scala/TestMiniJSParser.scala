@@ -28,12 +28,21 @@ class TestMiniJSParser extends FunSuite {
 
     /* Block */
     val parsedComplexBlock = MiniJSParser.parseAll(MiniJSParser.block, complexBlockString)
-    test("Complex Block") { assert(parsedComplexBlock.get === complexBlock)}
+    test("Complex Block") { assert(parsedComplexBlock.get === complexBlock) }
 
 
+
+
+    /* Conditional */
+    val parsedBasicConditional = MiniJSParser.parseAll(MiniJSParser.conditional, basicConditionalString)
+    test("Basic Conitional") { assert(parsedBasicConditional.get === basicConditional) }
+
+    /* TODO: Conditionals with `else` */
+    // val parsedSimpleConditional = MiniJSParser.parseAll(MiniJSParser.conditional, simpleConditionalString)
+    // test("Simple Conditional") { assert(parsedSimpleConditional.get === simpleConditional) }
 
     /* Loop */
-    
+
     /* TODO: REP */
 
 }
