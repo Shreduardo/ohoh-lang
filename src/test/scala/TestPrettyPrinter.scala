@@ -9,6 +9,6 @@ class TestPrettyPrinter extends FunSuite {
     val unparsedBasicAssignment = PrettyPrinter.toFormattedString( MiniJSParser.parseAll(MiniJSParser.assignment, basicAssignmentString).get )
     test("Basic Assignment") { assert(unparsedBasicAssignment == basicAssignmentFormatted)}
 
-    
+
 
 }

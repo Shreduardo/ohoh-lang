@@ -14,10 +14,8 @@ case class Plus(left: Statement, right: Statement) extends BinaryStatement(left,
 case class Minus(left: Statement, right: Statement) extends BinaryStatement(left, right)
 case class Mult(left: Statement, right: Statement) extends BinaryStatement(left, right)
 case class Div(left: Statement, right: Statement) extends BinaryStatement(left, right)
-<<<<<<< HEAD
-=======
 case class Mod(left: Statement, right: Statement) extends BinaryStatement(left, right)
->>>>>>> e1132f4c759c5fb7964e2a0c090c266cb97fcb34
+
 
 /*Imperative Statements*/
 case class Variable(name: String) extends Statement {
@@ -33,9 +31,7 @@ case class Condition(guard: Statement, body: Statement, elseBody: Option[Stateme
     require(body != null)
 }
 
-<<<<<<< HEAD
+
 case class Loop(guard: Statement, body: Statement) extends BinaryStatement(guard, body)
-=======
-case class While(guard: Statement, body: Statement) extends BinaryStatement(guard, body)
->>>>>>> e1132f4c759c5fb7964e2a0c090c266cb97fcb34
+
 case class Assignment(left: Variable, right: Statement) extends BinaryStatement(left, right)
