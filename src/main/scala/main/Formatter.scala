@@ -7,44 +7,48 @@ package luccs.proglang.p3a.scala
 * Changed to `PrettyPrinter` because it only handles print formatting
 */
 
-object PrettyPrinter {
-  val EOL = scala.util.Properties.lineSeparator
-  val INDENT = ".."
+object Formatter {
+      val EOL = scala.util.Properties.lineSeparator
+      val INDENT = ".."
 
-  def toFormattedString(prefix: String)(e: Statement): String = e match {
-  case Constant(c) => prefix + c.toString
- // case UMinus(r)   => buildUnaryStatementString(prefix, "UMinus", toFormattedString(prefix + INDENT)(r))
-  case Plus(l, r)  => buildStatementString(prefix, "Plus", toFormattedString(prefix + INDENT)(l), toFormattedString(prefix + INDENT)(r))
-  case Minus(l, r) => buildStatementString(prefix, "Minus", toFormattedString(prefix + INDENT)(l), toFormattedString(prefix + INDENT)(r))
-  case Mult(l, r) => buildStatementString(prefix, "Times", toFormattedString(prefix + INDENT)(l), toFormattedString(prefix + INDENT)(r))
-  case Div(l, r)   => buildStatementString(prefix, "Div", toFormattedString(prefix + INDENT)(l), toFormattedString(prefix + INDENT)(r))
-  case Mod(l, r)   => buildStatementString(prefix, "Mod", toFormattedString(prefix + INDENT)(l), toFormattedString(prefix + INDENT)(r))
-}
+      def toFormattedString(prefix: String)(e: Statement): String = e match {
+          case Constant(c) => prefix + c.toString
+         // case UMinus(r)   => buildUnaryStatementString(prefix, "UMinus", toFormattedString(prefix + INDENT)(r))
+          case Plus(l, r)  => buildStatementString(prefix, "Plus", toFormattedString(prefix + INDENT)(l), toFormattedString(prefix + INDENT)(r))
+          case Minus(l, r) => buildStatementString(prefix, "Minus", toFormattedString(prefix + INDENT)(l), toFormattedString(prefix + INDENT)(r))
+          case Mult(l, r) => buildStatementString(prefix, "Times", toFormattedString(prefix + INDENT)(l), toFormattedString(prefix + INDENT)(r))
+          case Div(l, r)   => buildStatementString(prefix, "Div", toFormattedString(prefix + INDENT)(l), toFormattedString(prefix + INDENT)(r))
+          case Mod(l, r)   => buildStatementString(prefix, "Mod", toFormattedString(prefix + INDENT)(l), toFormattedString(prefix + INDENT)(r))
+      }
 
-def toFormattedString(e: Statement): String = toFormattedString("")(e)
+      def toFormattedString(e: Statement): String = toFormattedString("")(e)
 
-def buildStatementString(prefix: String, nodeString: String, leftString: String, rightString: String) = {
-  val result = new StringBuilder(prefix)
-  result.append(nodeString)
-  result.append("(")
-  result.append(EOL)
-  result.append(leftString)
-  result.append(", ")
-  result.append(EOL)
-  result.append(rightString)
-  result.append(")")
-  result.toString
-}
+      def buildStatementString(prefix: String, nodeString: String, leftString: String, rightString: String) = {
+          val result = new StringBuilder(prefix)
+          result.append(nodeString)
+          result.append("(")
+          result.append(EOL)
+          result.append(leftString)
+          result.append(", ")
+          result.append(EOL)
+          result.append(rightString)
+          result.append(")")
+          result.toString
+      }
 
-def buildUnaryStatementString(prefix: String, nodeString: String, StatementString: String) = {
-  val result = new StringBuilder(prefix)
-  result.append(nodeString)
-  result.append("(")
-  result.append(EOL)
-  result.append(StatementString)
-  result.append(")")
-  result.toString
-}
+      def buildUnaryStatementString(prefix: String, nodeString: String, StatementString: String) = {
+          val result = new StringBuilder(prefix)
+          result.append(nodeString)
+          result.append("(")
+          result.append(EOL)
+          result.append(StatementString)
+          result.append(")")
+          result.toString
+      }
+
+      def prettyPrinter() = {
+
+      }
 
 
 
