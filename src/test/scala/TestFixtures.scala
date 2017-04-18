@@ -1,17 +1,35 @@
 package luccs.proglang.p3a.scala
 
+<<<<<<< HEAD
+
+object TestFixtures {
+
+    val EOL = scala.util.Properties.lineSeparator
+    val INDENT = ".."
+
+    /**Assignments**/
+
+    val basicAssignmentString = "x = 5"
+    val basicAssignment = Assignment(Variable("x"), Constant(5))
+    val basicAssignmentFormatted = "x = 5" + EOL
+=======
 object TestFixtures {
 
     /**Assignments**/
     /*Correct*/
     val basicAssignmentString = "x = 5"
     val basicAssignment = Assignment(Variable("x"), Constant(5))
+>>>>>>> e1132f4c759c5fb7964e2a0c090c266cb97fcb34
 
     val repAssignmentString = "x = 5 y = 7"
     val repAssignment = Sequence(
                                 Assignment(Variable("x"), Constant(5)),
                                 Assignment(Variable("y"), Constant(7))
+<<<<<<< HEAD
+                                )
+=======
                               )
+>>>>>>> e1132f4c759c5fb7964e2a0c090c266cb97fcb34
 
     val assignmentToExpressionString = "x = ((1 + y2) - (3 * y4)) / 5"
     val assignmentToExpression = Assignment(
@@ -30,11 +48,19 @@ object TestFixtures {
                                             Constant(5)
                                         )
                                        )
+<<<<<<< HEAD
+
+
+
+
+    /**Expressions**/
+=======
     /*Incorect*/
 
 
     /**Expressions**/
     /*Correct*/
+>>>>>>> e1132f4c759c5fb7964e2a0c090c266cb97fcb34
 
     val complexExpressionString = "((1 + y2) - (3 * y4)) / 5"
     val complexExpression = Div(
@@ -50,8 +76,12 @@ object TestFixtures {
                                 ),
                                 Constant(5)
                             )
+<<<<<<< HEAD
+    //Incorrect
+=======
 
     //Still wrong, but not worth the time to fix right now
+>>>>>>> e1132f4c759c5fb7964e2a0c090c266cb97fcb34
     //   val complexExpressionTreeString =
     //     """Div(
     //       |..Minus(
@@ -67,12 +97,20 @@ object TestFixtures {
     //       |..5
     //       |)""".stripMargin
 
+<<<<<<< HEAD
+
+
+
+    /**Blocks**/
+
+=======
     /*Incorrect*/
 
 
     /**Blocks**/
     /*Correct*/
     /* TODO: REP */
+>>>>>>> e1132f4c759c5fb7964e2a0c090c266cb97fcb34
     val complexBlockString = "{ r = r + x y = y + 1 }"
     val complexBlock = Sequence(
                             Assignment(
@@ -91,12 +129,21 @@ object TestFixtures {
                             )
                         )
 
+<<<<<<< HEAD
+
+
+
+
+
+    /**Conditionals**/
+=======
     /*Incorrect*/
 
 
     /* TODO: Conditionals */
     /**Conditionals**/
     /*Correct*/
+>>>>>>> e1132f4c759c5fb7964e2a0c090c266cb97fcb34
 
     val basicConditionalString = "if (1) { x = 2 }"
     val basicConditional = Condition(
@@ -121,6 +168,58 @@ object TestFixtures {
                                 ))
                             )
 
+<<<<<<< HEAD
+
+    val conditionalRepExpressionBlockString = "if (4) { r = r + x  y = y + 1 }"
+    val conditionalRepExpressionBlock = Condition(
+                                            Constant(4),
+                                            Sequence(
+                                                Assignment(
+                                                    Variable("r"),
+                                                    Plus(
+                                                        Variable("r"),
+                                                        Variable("x")
+                                                    )
+                                                ),
+                                                Assignment(
+                                                    Variable("y"),
+                                                    Plus(
+                                                        Variable("y"),
+                                                        Constant(1)
+                                                    )
+                                                )
+                                            ),
+                                            None
+                                        )
+
+
+
+
+
+
+    /**Loops**/
+
+    val simpleLoopString = "while (y) { r = r + x  y = y - 1 }"
+    val simpleLoop = Loop(
+                        Variable("y"),
+                        Sequence(
+                            Assignment(
+                                Variable("r"),
+                                Plus(
+                                    Variable("r"),
+                                    Variable("x")
+                                )
+                            ),
+                            Assignment(
+                                Variable("y"),
+                                Minus(
+                                    Variable("y"),
+                                    Constant(1)
+                                )
+                            )
+                        )
+                     )
+=======
     // /* TODO: REP */
     // val conditionalRepExpressionBlockString = "if (4) { r = r + x  y = y + 1 }"
 
@@ -133,4 +232,5 @@ object TestFixtures {
 
     /*Incorrect*/
 
+>>>>>>> e1132f4c759c5fb7964e2a0c090c266cb97fcb34
 }

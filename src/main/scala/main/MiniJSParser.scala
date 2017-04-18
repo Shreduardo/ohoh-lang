@@ -24,11 +24,19 @@ object MiniJSParser extends JavaTokenParsers {
         | term
         | factor
     )
+<<<<<<< HEAD
+
+    /* TODO: Add support for % constructs */
+    def term: Parser[Statement] = (
+        factor ~ "*" ~ factor ^^ { case l ~ _ ~ r => Mult(l, r) }
+        | factor ~ "/" ~ factor ^^ { case l ~ _ ~ r => Div(l, r) }
+=======
     
     def term: Parser[Statement] = (
         factor ~ "*" ~ factor ^^ { case l ~ _ ~ r => Mult(l, r) }
         | factor ~ "/" ~ factor ^^ { case l ~ _ ~ r => Div(l, r) }
         | factor ~ "%" ~ factor ^^ { case l ~ _ ~ r => Mod(l, r) }
+>>>>>>> e1132f4c759c5fb7964e2a0c090c266cb97fcb34
         | factor
     )
 
@@ -52,7 +60,11 @@ object MiniJSParser extends JavaTokenParsers {
 
     /* TODO: add 'for' consturcts */
     def loop: Parser[Statement] = (
+<<<<<<< HEAD
+        "while" ~ "(" ~> expr ~ ")" ~ block ^^ { case g ~ _ ~ b => Loop(g, b)}
+=======
         "while" ~ "(" ~> expr ~ ")" ~ block ^^ { case g ~ _ ~ b => While(g, b)}
+>>>>>>> e1132f4c759c5fb7964e2a0c090c266cb97fcb34
     )
 
     def assignment: Parser[Statement] = (
