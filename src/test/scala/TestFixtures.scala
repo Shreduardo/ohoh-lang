@@ -14,7 +14,6 @@ object TestFixtures {
       """Assignment(
          |..Variable(
          |....x,
-         |....5
          |..),
          |..Constant(
          |....5
