@@ -29,10 +29,11 @@ object TestFixtures {
 
 
 
-    val assignmentToExpressionString = "x = ((1 + y2) - (3 * y4)) / 5"
+    val assignmentToExpressionString = "x = ((1 + y2) - (3 * y4)) % 5"
+    //Changed the Div to Mod to test the new addition.  Also applied UMinus to a constant
     val assignmentToExpression = Assignment(
                                         Variable("x"),
-                                        Div(
+                                        Mod(
                                             Minus(
                                                 Plus(
                                                     Constant(1),
@@ -50,19 +51,26 @@ object TestFixtures {
 
     /**Expressions**/
     /*Correct*/
-    val complexExpressionString = "((1 + y2) - (3 * y4)) / 5"
+    val complexExpressionString = "(-(1 + y2) - -(3 * y4)) / -5"
+  //UMinus was applied to a longer statement here.
     val complexExpression = Div(
                                 Minus(
-                                    Plus(
+                                    UMinus(
+                                      Plus(
                                         Constant(1),
                                         Variable("y2")
+                                      )
                                     ),
-                                    Mult(
+                                    UMinus(
+                                      Mult(
                                         Constant(3),
                                         Variable("y4")
+                                      )
                                     )
                                 ),
-                                Constant(5)
+                                UMinus(
+                                  Constant(5)
+                                )
                             )
     //   val complexExpressionTreeString =
     //     """Div(
