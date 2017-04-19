@@ -12,13 +12,10 @@ object TestFixtures {
     val basicAssignment = Assignment(Variable("x"), Constant(5))
     val basicAssignmentFormatted =
       """Assignment(
-         |..Variable(
-         |....x,
-         |..),
-         |..Constant(
-         |....5
-         |..)
-         )"""
+         ..Variable(
+         ....x),
+         ..Constant(
+         ....5))"""
 
     val basicAssignmentPretty = "x = 5" + EOL
 

@@ -7,7 +7,7 @@ class TestFormatter extends FunSuite {
 
     //print(basicAssignment.getClass)
     val formattedBasicAssignment = Formatter.toFormattedString(basicAssignment)
-    test("Basic Assignment") { assert(formattedBasicAssignment == basicAssignmentFormatted)}
+    test("Basic Assignment") { assert(formattedBasicAssignment === basicAssignmentFormatted)}
 
 
 }
