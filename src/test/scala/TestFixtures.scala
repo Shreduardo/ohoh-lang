@@ -20,7 +20,6 @@ object TestFixtures {
     val basicAssignmentPretty = "x = 5" + EOL
 
 
-
     val repAssignmentString = "x = 5 y = 7"
     val repAssignment = Sequence(
                                 Assignment(Variable("x"), Constant(5)),
@@ -51,7 +50,7 @@ object TestFixtures {
 
     /**Expressions**/
     /*Correct*/
-    val complexExpressionString = "(-(1 + y2) - -(3 * y4)) / -5"
+    val complexExpressionString = "(-(1 + y2) - -(3 * y4)) / - 5"
   //UMinus was applied to a longer statement here.
     val complexExpression = Div(
                                 Minus(
