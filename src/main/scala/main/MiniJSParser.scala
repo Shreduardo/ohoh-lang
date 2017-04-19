@@ -34,6 +34,8 @@ object MiniJSParser extends JavaTokenParsers {
 
     def factor: Parser[Statement] = (
         wholeNumber ^^ { case s => Constant(s.toInt) }
+        | "+" ~> factor ^^ { case e => e }
+        | "-" ~> factor ^^ { case e => UMinus(e) }
         | ident ^^ { case s => Variable(s) }
         | "(" ~> expr <~ ")" ^^ { case e => e }
     )
