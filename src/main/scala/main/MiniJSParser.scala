@@ -48,8 +48,8 @@ object MiniJSParser extends JavaTokenParsers {
 
     /* TODO: add else constructs */
     def conditional: Parser[Statement] = (
-        "if" ~ "(" ~ expr ~ ")" ~ block ^^ { case _ ~ _ ~ g ~ _ ~ b => Condition(g, b, None)}
-        | "if" ~ "(" ~ expr ~ ")" ~ block ~ "else" ~ block ^^ {case _ ~ _ ~ g ~ _ ~  b1 ~ _ ~ b2 => Condition(g, b1, Some(b2)) }
+        "if" ~ "(" ~ expr ~ ")" ~ block ^^ { case _ ~ _ ~ g ~ _ ~ b => Condition(g, b, Void()) } 
+        | "if" ~ "(" ~ expr ~ ")" ~ block ~ "else" ~ block ^^ {case _ ~ _ ~ g ~ _ ~  b1 ~ _ ~ b2 => Condition(g, b1, b2) }
     )
 
     /* TODO: add 'for' consturcts */

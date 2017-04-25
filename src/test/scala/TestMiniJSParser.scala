@@ -45,8 +45,8 @@ class TestMiniJSParser extends FunSuite {
 
 
     /* TODO: Conditionals with `else` */
-    // val parsedSimpleConditional = MiniJSParser.parseAll(MiniJSParser.conditional, simpleConditionalString)
-    // test("Simple Conditional") { assert(parsedSimpleConditional.get === simpleConditional) }
+    val parsedSimpleConditional = MiniJSParser.parseAll(MiniJSParser.conditional, simpleConditionalString)
+    test("Simple Conditional") { assert(parsedSimpleConditional.get === simpleConditional) }
 
 
 

@@ -7,6 +7,10 @@ abstract class BinaryStatement(left: Statement, right: Statement) extends Statem
     require(left != null)
     require(right != null)
 }
+
+/* Blank Stantment to handle nullity */
+case class Void() extends Statement
+
 /*Effect-less Statements*/
 case class Constant(value: Int) extends Statement
 case class UMinus(value: Statement) extends Statement
@@ -26,7 +30,7 @@ case class Sequence(statements: Statement*) extends Statement {
 }
 
 /* TODO: Condition */
-case class Condition(guard: Statement, body: Statement, elseBody: Option[Statement]) extends Statement {
+case class Condition(guard: Statement, body: Statement, elseBody: Statement) extends Statement {
     require(guard != null)
     require(body != null)
 }

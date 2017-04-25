@@ -118,7 +118,7 @@ object TestFixtures {
                                     Variable("x"),
                                     Constant(2)
                                 ),
-                                None
+                                Void()
                             )
 
     val simpleConditionalString = "if (1) { x = 2 } else { x = 3 }"
@@ -128,14 +128,14 @@ object TestFixtures {
                                     Variable("x"),
                                     Constant(2)
                                 ),
-                                Option(Assignment(
+                                Assignment(
                                     Variable("x"),
                                     Constant(3)
-                                ))
+                                )
                             )
 
 
-    val conditionalRepExpressionBlockString = "if (4) { r = r + x  y = y + 1 }"
+    val conditionalRepExpressionBlockString = "if (4) { r = r + x y = y + 1 }"
     val conditionalRepExpressionBlock = Condition(
                                             Constant(4),
                                             Sequence(
@@ -154,7 +154,7 @@ object TestFixtures {
                                                     )
                                                 )
                                             ),
-                                            None
+                                            Void()
                                         )
 
 
