@@ -19,7 +19,7 @@ object Formatter {
           case UMinus(r)   => buildUnaryStatementString(prefix, "UMinus", toFormattedString(prefix + INDENT)(r))
           case Plus(l, r)  => buildStatementString(prefix, "Plus", toFormattedString(prefix + INDENT)(l), toFormattedString(prefix + INDENT)(r))
           case Minus(l, r) => buildStatementString(prefix, "Minus", toFormattedString(prefix + INDENT)(l), toFormattedString(prefix + INDENT)(r))
-          case Mult(l, r) => buildStatementString(prefix, "Times", toFormattedString(prefix + INDENT)(l), toFormattedString(prefix + INDENT)(r))
+          case Mult(l, r) => buildStatementString(prefix, "Mult", toFormattedString(prefix + INDENT)(l), toFormattedString(prefix + INDENT)(r))
           case Div(l, r)   => buildStatementString(prefix, "Div", toFormattedString(prefix + INDENT)(l), toFormattedString(prefix + INDENT)(r))
           case Mod(l, r)   => buildStatementString(prefix, "Mod", toFormattedString(prefix + INDENT)(l), toFormattedString(prefix + INDENT)(r))
 
@@ -29,7 +29,7 @@ object Formatter {
           //case Condition(g, b1, b2) => buildStatementString(prefix, "Condition", toFormattedString(prefix + INDENT)(g), toFormattedString(prefix + INDENT)(b))
           case Loop(g, b) => buildStatementString(prefix, "Loop", toFormattedString(prefix + INDENT)(g), toFormattedString(prefix + INDENT)(b))
 
-          case Sequence(s) => buildLinearStatementString(prefix, "Sequence", s)
+          case Sequence(s @ _*) => buildLinearStatementString(prefix, "Sequence", s: _*)
       }
 
       def toFormattedString(e: Statement): String = toFormattedString("")(e)
@@ -40,7 +40,7 @@ object Formatter {
           result.append("(")
           result.append(EOL)
           result.append(leftString)
-          result.append(", ")
+          result.append(",")
           result.append(EOL)
           result.append(rightString)
           result.append(")")
@@ -64,10 +64,12 @@ object Formatter {
           result.append(EOL)
 
           val aggregate = statements.foldLeft("") ((aggregate, next:Statement) => {
-              aggregate + toFormattedString(prefix)(next)
+              aggregate + toFormattedString(prefix + INDENT)(next)
             })
 
           result.append(aggregate)
+          result.append(",")
+          result.append(EOL)
           result.append(")")
           result.toString
       }

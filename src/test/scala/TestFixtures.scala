@@ -71,21 +71,24 @@ object TestFixtures {
                                   Constant(5)
                                 )
                             )
-    //   val complexExpressionTreeString =
-    //     """Div(
-    //       |..Minus(
-    //       |....Plus(
-    //       |......1,
-    //       |......2
-    //       |....),
-    //       |....Mult(
-    //       |......3,
-    //       |......4
-    //       |....)
-    //       |..),
-    //       |..5
-    //       |)""".stripMargin
-
+    val complexExpressionFormatted =
+        """|Div(
+            |..Minus(
+            |....UMinus(
+            |......Plus(
+            |........Constant(
+            |..........1),
+            |........Variable(
+            |..........y2))),
+            |....UMinus(
+            |......Mult(
+            |........Constant(
+            |..........3),
+            |........Variable(
+            |..........y4)))),
+            |..UMinus(
+            |....Constant(
+            |......5)))""".stripMargin
 
 
 
@@ -133,6 +136,22 @@ object TestFixtures {
                                     Constant(3)
                                 )
                             )
+
+    val simpleConditionalFormatted =
+        """|Condition(
+           |..Constant(
+           |....1),
+           |..Assignment(
+           |....Variable(
+           |......x),
+           |....Constant(
+           |......2)),
+           |..Assignment(
+           |....Variable(
+           |......x),
+           |....Constant(
+           |......3)))""".stripMargin
+
 
 
     val conditionalRepExpressionBlockString = "if (4) { r = r + x y = y + 1 }"
@@ -184,4 +203,27 @@ object TestFixtures {
                             )
                         )
                      )
+
+    val simpleLoopFormatted =
+        """|Loop(
+           |..Variable(
+           |....y),
+           |..Sequence(
+           |....Assignment(
+           |......Variable(
+           |........r),
+           |......Plus(
+           |........Variable(
+           |..........r),
+           |........Variable(
+           |..........x))),
+           |....Assignment(
+           |......Variable(
+           |........y),
+           |......Minus(
+           |........Variable(
+           |..........y),
+           |........Constant(
+           |..........1)))))""".stripMargin
+
 }
