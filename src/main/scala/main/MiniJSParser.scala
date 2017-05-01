@@ -8,9 +8,7 @@ object MiniJSParser extends JavaTokenParsers {
                                          loop |
                                          assignment|
                                          block |
-                                         expr |
-                                         term |
-                                         factor
+                                         expr
                                        )
 
     def repeated: Parser[Statement] = (
@@ -38,17 +36,16 @@ object MiniJSParser extends JavaTokenParsers {
         | "-" ~> factor ^^ { case e => UMinus(e) }
         | ident ^^ { case s => Variable(s) }
         | "(" ~> expr <~ ")" ^^ { case e => e }
+        | struct
     )
 
     def block: Parser[Statement] = (
         "{" ~> statement <~ "}" ^^ {case s => s}
-        | "{" ~> rep(statement) <~ "}" ^^ { case r => Sequence(r: _*) }
+        | "{" ~> rep(statement) <~ "}" ^^ { case r => Sequence(r.toArray: _*) }
     )
 
-
-    /* TODO: add else constructs */
     def conditional: Parser[Statement] = (
-        "if" ~ "(" ~ expr ~ ")" ~ block ^^ { case _ ~ _ ~ g ~ _ ~ b => Condition(g, b, Void()) } 
+        "if" ~ "(" ~ expr ~ ")" ~ block ^^ { case _ ~ _ ~ g ~ _ ~ b => Condition(g, b, Void) }
         | "if" ~ "(" ~ expr ~ ")" ~ block ~ "else" ~ block ^^ {case _ ~ _ ~ g ~ _ ~  b1 ~ _ ~ b2 => Condition(g, b1, b2) }
     )
 
@@ -59,6 +56,15 @@ object MiniJSParser extends JavaTokenParsers {
 
     def assignment: Parser[Statement] = (
         ident ~ "=" ~ expr ^^ {case l ~ _ ~ r => Assignment(Variable(l), r)}
+    )
+
+    def struct: Parser[Statement] = (
+        "{" ~ "}" ^^ { case _ => Struct() }
+        | "{" ~> repsep(field, ",") <~ "}" ^^ { case f => Struct(f: _*) }  //repsep as shortcut for "," ?
+    )
+
+    def field: Parser[Statement] = (
+        ident ~ ":" ~ expr ^^ {case i ~ _ ~ e => Field(i, e)}
     )
 
 }

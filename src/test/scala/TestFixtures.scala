@@ -11,11 +11,11 @@ object TestFixtures {
     val basicAssignmentString = "x = 5"
     val basicAssignment = Assignment(Variable("x"), Constant(5))
     val basicAssignmentFormatted =
-      """Assignment(
-         ..Variable(
-         ....x),
-         ..Constant(
-         ....5))"""
+      """|Assignment(
+         |..Variable(
+         |....x),
+         |..Constant(
+         |....5))""".stripMargin
 
     val basicAssignmentPretty = "x = 5" + EOL
 
@@ -118,7 +118,7 @@ object TestFixtures {
                                     Variable("x"),
                                     Constant(2)
                                 ),
-                                Void()
+                                Void
                             )
 
     val simpleConditionalString = "if (1) { x = 2 } else { x = 3 }"
@@ -154,7 +154,7 @@ object TestFixtures {
                                                     )
                                                 )
                                             ),
-                                            Void()
+                                            Void
                                         )
 
 

@@ -43,7 +43,6 @@ class TestMiniJSParser extends FunSuite {
     val parsedConditionalRepExpressionBlock = MiniJSParser.parseAll(MiniJSParser.conditional, conditionalRepExpressionBlockString)
     test("Conditional with Repeated Expression Block") { assert(parsedConditionalRepExpressionBlock === conditionalRepExpressionBlock) }
 
-
     /* TODO: Conditionals with `else` */
     val parsedSimpleConditional = MiniJSParser.parseAll(MiniJSParser.conditional, simpleConditionalString)
     test("Simple Conditional") { assert(parsedSimpleConditional.get === simpleConditional) }

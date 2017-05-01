@@ -9,7 +9,7 @@ abstract class BinaryStatement(left: Statement, right: Statement) extends Statem
 }
 
 /* Blank Stantment to handle nullity */
-case class Void() extends Statement
+case object Void extends Statement
 
 /*Effect-less Statements*/
 case class Constant(value: Int) extends Statement
@@ -29,6 +29,10 @@ case class Sequence(statements: Statement*) extends Statement {
     require(statements != null)
 }
 
+case class Loop(guard: Statement, body: Statement) extends BinaryStatement(guard, body)
+case class Assignment(left: Variable, right: Statement) extends BinaryStatement(left, right)
+
+
 /* TODO: Condition */
 case class Condition(guard: Statement, body: Statement, elseBody: Statement) extends Statement {
     require(guard != null)
@@ -36,6 +40,23 @@ case class Condition(guard: Statement, body: Statement, elseBody: Statement) ext
 }
 
 
-case class Loop(guard: Statement, body: Statement) extends BinaryStatement(guard, body)
+case class Struct(elements: Statement*) extends Statement {
+    require(elements != null)
+}
 
-case class Assignment(left: Variable, right: Statement) extends BinaryStatement(left, right)
+case class Field(key: String, value: Statement) extends Statement {
+    require(key != null)
+    require(value != null)
+}
+
+
+/* Questions
+    1) Void() syntax for optional statements
+    2) Nested List vs Wrapped Array (test failure)
+    3) Formatting for unparser test fixtures
+
+*   Field--------
+      X 1) key a variable?
+      2) is it essential an assignment?
+      3)
+*/
