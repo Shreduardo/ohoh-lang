@@ -1,6 +1,5 @@
 package luccs.proglang.p3a.scala
 
-
 object TestFixtures {
 
     val EOL = scala.util.Properties.lineSeparator
