@@ -1,7 +1,11 @@
 package luccs.proglang.p3a.scala
 
+import MemTypes._
+import Execute._
+
 object REPL extends App {
 
+    //var store: Store = Map[String, lVal[Int]]()
     /* TODO: Error handling */
     def processInput(input: String): Statement = {
         val result = MiniJSParser.parseAll(MiniJSParser.statement, input)

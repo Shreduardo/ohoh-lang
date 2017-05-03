@@ -48,9 +48,11 @@ object TestFixtures {
 
 
     /**Expressions**/
-    /*Correct*/
+    val basicExpression = Plus(Constant(1), Constant(2))
+
+    val simpleExpression = Div(Plus(Constant(8), Constant(4)), Mult(Constant(3), Constant(2)))
+
     val complexExpressionString = "(-(1 + y2) - -(3 * y4)) / - 5"
-  //UMinus was applied to a longer statement here.
     val complexExpression = Div(
                                 Minus(
                                     UMinus(
