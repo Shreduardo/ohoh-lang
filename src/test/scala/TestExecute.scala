@@ -11,18 +11,20 @@ import TestFixtures._
 class TestExecute extends FunSuite {
 
     /* Binary Operations Testing */
-    test("Plus Binary Op") { assert ( binOp(c1, c2, _+_) === Cell(43) ) }
+    test("Plus Binary Op") { assert ( binOp(c2, c3, _+_) === Cell(168) ) }
     test("Minus Binary Op") { assert ( binOp(c4, c3, _-_) === Cell(4) ) }
     test("Div Binary Op") { assert ( binOp(c3, c2, _/_) === Cell(3) ) }
     test("Mult Binary Op") { assert ( binOp(c2, c3, _*_) === Cell(5292) ) }
     test("Mod Binary Op") { assert ( binOp(c4, c2, _%_) === Cell(4) ) }
-// test("Basic Execute") {
-//     assert(Execute(store, basicExpression) === 3)
-// }
-//
-// test("Simple Execute") {
-//     assert(Execute(store, simpleExpression) === 2)
-// }
+
+    /* Execution on Statement Testing */
+    test("Basic Execute") {
+        assert(Execute(store, basicExpression) === Cell(3))
+    }
+
+    test("Simple Execute") {
+        assert(Execute(store, simpleExpression) === Cell(2))
+    }
 
 
 }
