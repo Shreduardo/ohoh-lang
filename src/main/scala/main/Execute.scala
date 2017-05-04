@@ -9,15 +9,26 @@ import MemTypes._
 
 object Execute {
 
-
-
     def apply(store: Store, s: Statement): Cell = s match {
-        case Constant(value) => Cell(value)
-        case Plus(l, r)      => binOp(apply(store, l), apply(store, r), _+_)
-        case Minus(l, r)     => binOp(apply(store, l), apply(store, r), _-_)
-        case Mult(l, r)      => binOp(apply(store, l), apply(store, r), _*_)
-        case Div(l, r)       => binOp(apply(store, l), apply(store, r), _/_)
-        case Mod(l, r)       => binOp(apply(store, l), apply(store, r), _%_)
+        case Constant(value)  => Cell(value)
+        case Plus(l, r)       => binOp(apply(store, l), apply(store, r), _+_)
+        case Minus(l, r)      => binOp(apply(store, l), apply(store, r), _-_)
+        case Mult(l, r)       => binOp(apply(store, l), apply(store, r), _*_)
+        case Div(l, r)        => binOp(apply(store, l), apply(store, r), _/_)
+        case Mod(l, r)        => binOp(apply(store, l), apply(store, r), _%_)
+        case Variable(x)      => store(x)
+        case Assignment(l, r) => {
+            val left = apply(store, l)
+            val right = apply(store, r)
+            left.save(right.load)
+        }
+        case Sequence(statements @ _ *) => {
+            statements.foldLeft(Cell.NULL)((cell, next) apply(store, next))
+        }
+        // case Loop(guard, body) => {
+        //     var guardCell = apply(store, guard)
+        //     while(guardCell.load != 0)
+        // }
         //case UMinus
         //case Mult(l, r) => Cell(apply(store, l).load * apply(store, r).load)
     }

@@ -5,7 +5,8 @@ import Execute._
 
 object REPL extends App {
 
-    //var store: Store = Map[String, lVal[Int]]()
+    import scala.collection.mutable.Map
+    var store: Store = Map[String, Cell]()
     /* TODO: Error handling */
     def processInput(input: String): Statement = {
         val result = MiniJSParser.parseAll(MiniJSParser.statement, input)
@@ -29,7 +30,7 @@ object REPL extends App {
 
                 /* TODO: Evaluator (3b) */
                 println("The evaluated expression------")
-                println("TODO...  \n")
+                println(Execute(store, parsedStatement))
 
                 print("Enter infix expression: ")
             }
