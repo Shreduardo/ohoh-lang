@@ -2,7 +2,7 @@ package luccs.proglang.p3a.scala
 
 import scala.util.parsing.combinator._ //JavaTokenParsers
 
-object MiniJSParser extends JavaTokenParsers {
+object OHOHParser extends JavaTokenParsers {
 
     def syntax: Parser[Syntax] = (
                                     loop |

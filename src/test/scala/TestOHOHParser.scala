@@ -4,42 +4,42 @@ import org.scalatest.FunSuite
 import TestFixtures._
 
 
-class TestMiniJSParser extends FunSuite {
+class TestOHOHParser extends FunSuite {
 
     /* Assignments */
-    val parsedBasicAssignment = MiniJSParser.parseAll(MiniJSParser.assignment, basicAssignmentString)
+    val parsedBasicAssignment = OHOHParser.parseAll(OHOHParser.assignment, basicAssignmentString)
     test("Basic Assignment Parser") { assert(parsedBasicAssignment.get === basicAssignment) }
 
-    val parsedAssignmentToExpression = MiniJSParser.parseAll(MiniJSParser.assignment, assignmentToExpressionString)
+    val parsedAssignmentToExpression = OHOHParser.parseAll(OHOHParser.assignment, assignmentToExpressionString)
     test("Assignment to Expression Parser") { assert(parsedAssignmentToExpression.get === assignmentToExpression)}
 
-    val parsedRepeatedAssignment = MiniJSParser.parseAll(MiniJSParser.repeated, repAssignmentString)
+    val parsedRepeatedAssignment = OHOHParser.parseAll(OHOHParser.repeated, repAssignmentString)
     test("Repeated Assignment") { assert(parsedRepeatedAssignment.get === repAssignment) }
 
 
     /* Expressions */
-    val parsedComplexExpression = MiniJSParser.parseAll(MiniJSParser.expr, complexExpressionString)
+    val parsedComplexExpression = OHOHParser.parseAll(OHOHParser.expr, complexExpressionString)
     test("Complex Expression") { assert(parsedComplexExpression.get === complexExpression) }
 
 
 
 
     /* Block */
-    val parsedComplexBlock = MiniJSParser.parseAll(MiniJSParser.block, complexBlockString)
+    val parsedComplexBlock = OHOHParser.parseAll(OHOHParser.block, complexBlockString)
     test("Complex Block") { assert(parsedComplexBlock.get === complexBlock) }
 
 
 
 
     /* Conditional */
-    val parsedBasicConditional = MiniJSParser.parseAll(MiniJSParser.conditional, basicConditionalString)
+    val parsedBasicConditional = OHOHParser.parseAll(OHOHParser.conditional, basicConditionalString)
     test("Basic Conitional") { assert(parsedBasicConditional.get === basicConditional) }
 
-    val parsedConditionalRepExpressionBlock = MiniJSParser.parseAll(MiniJSParser.conditional, conditionalRepExpressionBlockString)
+    val parsedConditionalRepExpressionBlock = OHOHParser.parseAll(OHOHParser.conditional, conditionalRepExpressionBlockString)
     test("Conditional with Repeated Expression Block") { assert(parsedConditionalRepExpressionBlock.get === conditionalRepExpressionBlock) }
 
     // /* TODO: Conditionals with `else` */
-    // val parsedSimpleConditional = MiniJSParser.parseAll(MiniJSParser.conditional, simpleConditionalString)
+    // val parsedSimpleConditional = OHOHParser.parseAll(OHOHParser.conditional, simpleConditionalString)
     // test("Simple Conditional") { assert(parsedSimpleConditional.get === simpleConditional) }
     //
     //
@@ -47,7 +47,7 @@ class TestMiniJSParser extends FunSuite {
     //
     //
     /* Loop */
-    val parsedSimpleLoop = MiniJSParser.parseAll(MiniJSParser.loop, simpleLoopString)
+    val parsedSimpleLoop = OHOHParser.parseAll(OHOHParser.loop, simpleLoopString)
     test("Simple Loop with Repeated Expression Block") { assert(parsedSimpleLoop.get === simpleLoop)}
 
 
