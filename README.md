@@ -1,3 +1,5 @@
-# CS 372 Project 3a Repository #
+# ohoh-lang #
 
-Repository for project 3a of LUC comp 372 Spring 2017 semester. Project 3a is a Scala based interpreter for MiniJS. 
+Basic OO language made in Scala.
+
+Began as a school project but I had a lot of fun working on it so I am picking it up again!
