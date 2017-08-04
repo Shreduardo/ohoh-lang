@@ -13,7 +13,7 @@ object MemTypes {
     /* Mutable Memory Cells */
     case class Cell(var value: Value){
         def load: Value = value
-        def save(value: Value): Unit = this.value = value
+        def save(value: Value): Unit = { this.value = value }
     }
     /* Concrete Cell object */
     object Cell {

@@ -183,7 +183,6 @@ object TestFixtures {
 
 
     /**Loops**/
-
     val simpleLoopString = "while (y) { r = r + x  y = y - 1 }"
     val simpleLoop = Loop(
                         Variable("y"),

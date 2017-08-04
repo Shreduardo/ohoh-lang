@@ -1,50 +1,61 @@
 package luccs.proglang.p3a.scala
 
+/* Top level syntax trait */
+trait Syntax
 
-trait Statement
+/* Syntax category traits */
+trait Statement extends Syntax
+trait Expression extends Syntax
 
-abstract class BinaryStatement(left: Statement, right: Statement) extends Statement {
+/* Blank Syntax to handle nullity */
+case object Void extends Syntax
+
+abstract class BinaryExpression (left: Expression, right: Expression) extends Expression {
     require(left != null)
     require(right != null)
 }
 
-/* Blank Stantment to handle nullity */
-case object Void extends Statement
-
-/*Effect-less Statements*/
-case class Constant(value: Int) extends Statement
-case class UMinus(value: Statement) extends Statement
-case class Plus(left: Statement, right: Statement) extends BinaryStatement(left, right)
-case class Minus(left: Statement, right: Statement) extends BinaryStatement(left, right)
-case class Mult(left: Statement, right: Statement) extends BinaryStatement(left, right)
-case class Div(left: Statement, right: Statement) extends BinaryStatement(left, right)
-case class Mod(left: Statement, right: Statement) extends BinaryStatement(left, right)
+abstract class BinaryStatement(left: Syntax, right: Syntax) extends Statement {
+    require(left != null)
+    require(right != null)
+}
 
 
-/*Imperative Statements*/
-case class Variable(name: String) extends Statement {
+case class Sequence(repeatedSyntax: Syntax*) extends Syntax {
+    require(repeatedSyntax != null)
+}
+
+/*Effect-less Expressions*/
+case class Constant(value: Int) extends Expression
+case class UMinus(value: Expression) extends Expression
+case class Plus(left: Expression, right: Expression) extends BinaryExpression(left, right)
+case class Minus(left: Expression, right: Expression) extends BinaryExpression(left, right)
+case class Mult(left: Expression, right: Expression) extends BinaryExpression(left, right)
+case class Div(left: Expression, right: Expression) extends BinaryExpression(left, right)
+case class Mod(left: Expression, right: Expression) extends BinaryExpression(left, right)
+
+case class Variable(name: String) extends Expression {
     require(name != null)
 }
-case class Sequence(statements: Statement*) extends Statement {
-    require(statements != null)
-}
 
-case class Loop(guard: Statement, body: Statement) extends BinaryStatement(guard, body)
-case class Assignment(left: Variable, right: Statement) extends BinaryStatement(left, right)
+
+
+ case class Loop(guard: Expression, body: Syntax) extends BinaryStatement(guard, body)
+
+ case class Assignment(left: Variable, right: Syntax) extends BinaryStatement(left, right)
 
 
 /* TODO: Condition */
-case class Condition(guard: Statement, body: Statement, elseBody: Statement) extends Statement {
+case class Condition(guard: Expression, body: Syntax, elseBody: Syntax) extends Statement {
     require(guard != null)
     require(body != null)
 }
 
-
-case class Struct(elements: Statement*) extends Statement {
+case class Struct(elements: Field*) extends Statement {
     require(elements != null)
 }
 
-case class Field(key: String, value: Statement) extends Statement {
+case class Field(key: String, value: Syntax) extends Statement {
     require(key != null)
     require(value != null)
 }

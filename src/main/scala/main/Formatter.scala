@@ -12,29 +12,29 @@ object Formatter {
       val INDENT = ".."
       val PRETTY_INDENT = "\t"
 
-      def toFormattedString(prefix: String)(e: Statement): String = e match {
-          case Constant(c) => buildUnaryStatementString(prefix, "Constant", prefix + INDENT + c.toString)
-          case Variable(x) => buildUnaryStatementString(prefix, "Variable", prefix + INDENT + x)
+      def toFormattedString(prefix: String)(e: Syntax): String = e match {
+          case Constant(c) => buildUnarySyntaxString(prefix, "Constant", prefix + INDENT + c.toString)
+          case Variable(x) => buildUnarySyntaxString(prefix, "Variable", prefix + INDENT + x)
 
-          case UMinus(r)   => buildUnaryStatementString(prefix, "UMinus", toFormattedString(prefix + INDENT)(r))
-          case Plus(l, r)  => buildStatementString(prefix, "Plus", toFormattedString(prefix + INDENT)(l), toFormattedString(prefix + INDENT)(r))
-          case Minus(l, r) => buildStatementString(prefix, "Minus", toFormattedString(prefix + INDENT)(l), toFormattedString(prefix + INDENT)(r))
-          case Mult(l, r) => buildStatementString(prefix, "Mult", toFormattedString(prefix + INDENT)(l), toFormattedString(prefix + INDENT)(r))
-          case Div(l, r)   => buildStatementString(prefix, "Div", toFormattedString(prefix + INDENT)(l), toFormattedString(prefix + INDENT)(r))
-          case Mod(l, r)   => buildStatementString(prefix, "Mod", toFormattedString(prefix + INDENT)(l), toFormattedString(prefix + INDENT)(r))
+          case UMinus(r)   => buildUnarySyntaxString(prefix, "UMinus", toFormattedString(prefix + INDENT)(r))
+          case Plus(l, r)  => buildSyntaxString(prefix, "Plus", toFormattedString(prefix + INDENT)(l), toFormattedString(prefix + INDENT)(r))
+          case Minus(l, r) => buildSyntaxString(prefix, "Minus", toFormattedString(prefix + INDENT)(l), toFormattedString(prefix + INDENT)(r))
+          case Mult(l, r) => buildSyntaxString(prefix, "Mult", toFormattedString(prefix + INDENT)(l), toFormattedString(prefix + INDENT)(r))
+          case Div(l, r)   => buildSyntaxString(prefix, "Div", toFormattedString(prefix + INDENT)(l), toFormattedString(prefix + INDENT)(r))
+          case Mod(l, r)   => buildSyntaxString(prefix, "Mod", toFormattedString(prefix + INDENT)(l), toFormattedString(prefix + INDENT)(r))
 
-          case Assignment(l, r) => buildStatementString(prefix, "Assignment", toFormattedString(prefix + INDENT)(l), toFormattedString(prefix + INDENT)(r))
+          case Assignment(l, r) => buildSyntaxString(prefix, "Assignment", toFormattedString(prefix + INDENT)(l), toFormattedString(prefix + INDENT)(r))
 
           /* TODO: Condition */
-          //case Condition(g, b1, b2) => buildStatementString(prefix, "Condition", toFormattedString(prefix + INDENT)(g), toFormattedString(prefix + INDENT)(b))
-          case Loop(g, b) => buildStatementString(prefix, "Loop", toFormattedString(prefix + INDENT)(g), toFormattedString(prefix + INDENT)(b))
+          //case Condition(g, b1, b2) => buildSyntaxString(prefix, "Condition", toFormattedString(prefix + INDENT)(g), toFormattedString(prefix + INDENT)(b))
+         // case Loop(g, b) => buildSyntaxString(prefix, "Loop", toFormattedString(prefix + INDENT)(g), toFormattedString(prefix + INDENT)(b))
 
-          case Sequence(s @ _*) => buildLinearStatementString(prefix, "Sequence", s: _*)
+         // case Sequence(s @ _*) => buildLinearSyntaxString(prefix, "Sequence", s: _*)
       }
 
-      def toFormattedString(e: Statement): String = toFormattedString("")(e)
+      def toFormattedString(e: Syntax): String = toFormattedString("")(e)
 
-      def buildStatementString(prefix: String, nodeString: String, leftString: String, rightString: String) = {
+      def buildSyntaxString(prefix: String, nodeString: String, leftString: String, rightString: String) = {
           val result = new StringBuilder(prefix)
           result.append(nodeString)
           result.append("(")
@@ -47,34 +47,34 @@ object Formatter {
           result.toString
       }
 
-      def buildUnaryStatementString(prefix: String, nodeString: String, StatementString: String) = {
+      def buildUnarySyntaxString(prefix: String, nodeString: String, SyntaxString: String) = {
           val result = new StringBuilder(prefix)
           result.append(nodeString)
           result.append("(")
           result.append(EOL)
-          result.append(StatementString)
+          result.append(SyntaxString)
           result.append(")")
           result.toString
       }
 
-      def buildLinearStatementString(prefix: String, nodeString: String, statements: Statement*) = {
-          val result = new StringBuilder(prefix)
-          result.append(nodeString)
-          result.append("(")
-          result.append(EOL)
-
-          val aggregate = statements.foldLeft("") ((aggregate, next:Statement) => {
-              aggregate + toFormattedString(prefix + INDENT)(next)
-            })
-
-          result.append(aggregate)
-          result.append(",")
-          result.append(EOL)
-          result.append(")")
-          result.toString
-      }
-
-      def prettyPrinter() = {
-
-      }
+    //   def buildLinearSyntaxString(prefix: String, nodeString: String, Syntaxs: Syntax*) = {
+    //       val result = new StringBuilder(prefix)
+    //       result.append(nodeString)
+    //       result.append("(")
+    //       result.append(EOL)
+      //
+    //       val aggregate = Syntaxs.foldLeft("") ((aggregate, next:Syntax) => {
+    //           aggregate + toFormattedString(prefix + INDENT)(next)
+    //         })
+      //
+    //       result.append(aggregate)
+    //       result.append(",")
+    //       result.append(EOL)
+    //       result.append(")")
+    //       result.toString
+    //   }
+      //
+    //   def prettyPrinter() = {
+      //
+    //   }
 }

@@ -5,7 +5,6 @@ import TestFixtures._
 
 class TestFormatter extends FunSuite {
 
-    //print(basicAssignment.getClass)
     val formattedBasicAssignment = Formatter.toFormattedString(basicAssignment)
     test("Basic Assignment") { assert(formattedBasicAssignment === basicAssignmentFormatted)}
 
@@ -14,7 +13,7 @@ class TestFormatter extends FunSuite {
 
     // val formattedSimpleCondition = Formatter.toFormattedString(simpleConditional)
     // test("Simple Conditional") { assert(formattedSimpleCondition === simpleConditionalFormatted) }
-    // 
+
     // val formattedSimpleLoop = Formatter.toFormattedString(simpleLoop)
     // test("Simple Loop") { assert(formattedSimpleLoop === simpleLoopFormatted) }
 
