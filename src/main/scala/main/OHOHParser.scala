@@ -44,11 +44,11 @@ object OHOHParser extends JavaTokenParsers {
     )
 
     def conditional: Parser[Syntax] = (
-        "if" ~ "(" ~ expr ~ ")" ~ block ^^ { case _ ~ _ ~ g ~ _ ~ b => Condition(g, b, Void) }
-        | "if" ~ "(" ~ expr ~ ")" ~ block ~ "else" ~ block ^^ {case _ ~ _ ~ g ~ _ ~  b1 ~ _ ~ b2 => Condition(g, b1, b2) }
+        "if" ~ "(" ~ expr ~ ")" ~ block ~ "else" ~ block ^^ {case _ ~ _ ~ g ~ _ ~  b1 ~ _ ~ b2 => Condition(g, b1, b2) }
+        | "if" ~ "(" ~ expr ~ ")" ~ block ^^ { case _ ~ _ ~ g ~ _ ~ b => Condition(g, b, Void) }
     )
-    //
-    // /* TODO: add 'for' consturcts */
+
+    /* TODO: add 'for' consturcts */
     def loop: Parser[Syntax] = (
         "while" ~ "(" ~> expr ~ ")" ~ block ^^ { case g ~ _ ~ b => Loop(g, b)}
     )

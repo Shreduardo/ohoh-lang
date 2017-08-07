@@ -38,14 +38,14 @@ class TestOHOHParser extends FunSuite {
     val parsedConditionalRepExpressionBlock = OHOHParser.parseAll(OHOHParser.conditional, conditionalRepExpressionBlockString)
     test("Conditional with Repeated Expression Block") { assert(parsedConditionalRepExpressionBlock.get === conditionalRepExpressionBlock) }
 
-    // /* TODO: Conditionals with `else` */
-    // val parsedSimpleConditional = OHOHParser.parseAll(OHOHParser.conditional, simpleConditionalString)
-    // test("Simple Conditional") { assert(parsedSimpleConditional.get === simpleConditional) }
-    //
-    //
-    //
-    //
-    //
+    /* TODO: Conditionals with `else` */
+    val parsedSimpleConditional = OHOHParser.parseAll(OHOHParser.conditional, simpleConditionalString)
+    test("Simple Conditional") { assert(parsedSimpleConditional.get === simpleConditional) }
+
+
+
+
+
     /* Loop */
     val parsedSimpleLoop = OHOHParser.parseAll(OHOHParser.loop, simpleLoopString)
     test("Simple Loop with Repeated Expression Block") { assert(parsedSimpleLoop.get === simpleLoop)}

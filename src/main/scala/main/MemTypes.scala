@@ -15,6 +15,7 @@ object MemTypes {
         def load: Value = value
         def save(value: Value): Unit = { this.value = value }
     }
+    
     /* Concrete Cell object */
     object Cell {
         def apply(i: Int): Cell = Cell(Num(i))

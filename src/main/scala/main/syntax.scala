@@ -39,18 +39,24 @@ case class Variable(name: String) extends Expression {
 }
 
 
+case class Loop(guard: Expression, body: Syntax) extends BinaryStatement(guard, body)
 
- case class Loop(guard: Expression, body: Syntax) extends BinaryStatement(guard, body)
-
- case class Assignment(left: Variable, right: Syntax) extends BinaryStatement(left, right)
+case class Assignment(left: Variable, right: Syntax) extends BinaryStatement(left, right)
 
 
-/* TODO: Condition */
+/* TODO: Condition
+*   - Parser with 'else'
+*/
 case class Condition(guard: Expression, body: Syntax, elseBody: Syntax) extends Statement {
     require(guard != null)
     require(body != null)
 }
 
+/* TODO STRUCT and FIELD
+*   - Parser
+*   - Formatter
+*   - Execute
+*/
 case class Struct(elements: Field*) extends Statement {
     require(elements != null)
 }
