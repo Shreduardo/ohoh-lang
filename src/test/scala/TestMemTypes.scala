@@ -23,7 +23,7 @@ class TestMemTypes extends FunSuite {
         assert( retrieve(store, "c2") === Success(c2) )
     }
     test("Empty Store Value"){
-        assert(store.get("y") == None)
+        assert(store.get("a_nonexistent_store_variable") == None)
     }
 
 }

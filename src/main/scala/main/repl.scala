@@ -25,8 +25,6 @@ object REPL extends App {
                 }
 
                 val parsedStatement = processInput(line)
-
-                /* TODO: Handle Some() and None output */
                 println("EVAL: ")
                 println(Execute(store, parsedStatement))
                 print("osh >>> ")
@@ -34,6 +32,7 @@ object REPL extends App {
         }
     }
 
+    /* TODO: Create proper repl flow not just prompt loop */
     def welcome(): String = {
         val welcome = "                                        " +
                       "       ___________      ___________     " +

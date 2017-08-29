@@ -16,17 +16,14 @@ object Execute {
         case Mult(l, r)       => binaryOperation(apply(store, l), apply(store, r), _*_)
         case Div(l, r)        => binaryOperation(apply(store, l), apply(store, r), _/_)
         case Mod(l, r)        => binaryOperation(apply(store, l), apply(store, r), _%_)
-        case Variable(x)      => { Cell.NULL
-            // if(store.contains(x)){
-            //     return Cell(store.get(x))
-            // }
-            // else{
-            //     store(x) = NULL
-            //     return Cell.NULL
-            // }
+        case Variable(x)      => {
+            store.get(x) match {
+                case Some(x) => x
+                case None => Cell.NULL
+            }
         }
 
-        /* TODO: Get rid of Some() in print out */
+        // Assignment by value
         case Assignment(l, r) => {
             // l is a Variable type
             // Store the variable by name with apply
@@ -38,6 +35,7 @@ object Execute {
             // Return null Cell
             right
         }
+
         // case Sequence(statements @ _ *) => {
         //     statements.foldLeft(Cell.NULL)((cell, next) apply(store, next))
         // }
