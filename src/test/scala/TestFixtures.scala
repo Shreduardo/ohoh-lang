@@ -1,4 +1,4 @@
-package luccs.proglang.p3a.scala
+package shredev.ohohlang.scala
 
 object TestFixtures {
 
@@ -18,6 +18,8 @@ object TestFixtures {
 
     val basicAssignmentPretty = "x = 5" + EOL
 
+    val assignmentToVariableString = "y = z"
+    val assignmentToVariable = Assignment(Variable("y"), Variable("z"))
 
     val repAssignmentString = "x = 5 y = 7"
     val repAssignment = Sequence(

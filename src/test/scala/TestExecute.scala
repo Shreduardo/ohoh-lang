@@ -1,5 +1,5 @@
 
-package luccs.proglang.p3a.scala
+package shredev.ohohlang.scala
 
 import org.scalatest.FunSuite
 
@@ -19,11 +19,17 @@ class TestExecute extends FunSuite {
 
     /* Execution on Statement Testing */
     test("Basic Execute") {
-        assert(Execute(store, basicExpression) === Cell(Num(3)))
+        assert( Execute(store, basicExpression) === Cell(Num(3)) )
     }
-    
+
     test("Simple Execute") {
-        assert(Execute(store, simpleExpression) === Cell(2))
+        assert( Execute(store, simpleExpression) === Cell(Num(2)) )
+    }
+
+    /* Execution on Assignment */
+    test("Basic Assignment") {
+        assert( Execute(store, basicAssignment) == Cell(Num(5)) )
+        assert(store.get("x") == Some(Cell(5)))
     }
 
 

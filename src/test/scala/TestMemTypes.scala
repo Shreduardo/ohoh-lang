@@ -1,4 +1,4 @@
-package luccs.proglang.p3a.scala
+package shredev.ohohlang.scala
 
 import org.scalatest.FunSuite
 import scala.util.{ Failure, Success, Try }
@@ -21,6 +21,9 @@ class TestMemTypes extends FunSuite {
     test("Store Retreive") {
         store("c2") = c2
         assert( retrieve(store, "c2") === Success(c2) )
+    }
+    test("Empty Store Value"){
+        assert(store.get("y") == None)
     }
 
 }

@@ -1,4 +1,4 @@
-package luccs.proglang.p3a.scala
+package shredev.ohohlang.scala
 
 import scala.util.parsing.combinator._ //JavaTokenParsers
 
@@ -38,6 +38,7 @@ object OHOHParser extends JavaTokenParsers {
         | "(" ~> expr <~ ")" ^^ { case e => e }
     )
 
+    /* TODO: Handle execution before/after a block */
     def block: Parser[Syntax] = (
         "{" ~> syntax <~ "}" ^^ {case s => s}
         | "{" ~> rep(syntax) <~ "}" ^^ { case r => Sequence(r.toArray: _*) }

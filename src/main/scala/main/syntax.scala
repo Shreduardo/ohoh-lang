@@ -1,4 +1,4 @@
-package luccs.proglang.p3a.scala
+package shredev.ohohlang.scala
 
 /* Top level syntax trait */
 trait Syntax

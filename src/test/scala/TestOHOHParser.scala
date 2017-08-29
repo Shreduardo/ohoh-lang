@@ -1,4 +1,4 @@
-package luccs.proglang.p3a.scala
+package shredev.ohohlang.scala
 
 import org.scalatest.FunSuite
 import TestFixtures._
@@ -9,6 +9,9 @@ class TestOHOHParser extends FunSuite {
     /* Assignments */
     val parsedBasicAssignment = OHOHParser.parseAll(OHOHParser.assignment, basicAssignmentString)
     test("Basic Assignment Parser") { assert(parsedBasicAssignment.get === basicAssignment) }
+
+    val parsedAssignmentToVariable = OHOHParser.parseAll(OHOHParser.assignment, assignmentToVariableString)
+    test("Assignment to Variable Parser") { assert(parsedAssignmentToVariable.get === assignmentToVariable) }
 
     val parsedAssignmentToExpression = OHOHParser.parseAll(OHOHParser.assignment, assignmentToExpressionString)
     test("Assignment to Expression Parser") { assert(parsedAssignmentToExpression.get === assignmentToExpression)}

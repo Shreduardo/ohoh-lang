@@ -1,4 +1,4 @@
-package luccs.proglang.p3a.scala
+package shredev.ohohlang.scala
 
 import scala.util.{ Failure, Success, Try }
 
@@ -9,14 +9,14 @@ object MemTypes {
     sealed trait Value
     case class Num(value: Int) extends Value
 
-
     /* Mutable Memory Cells */
-    case class Cell(var value: Value){
+    case class Cell(var value: Value) {
         def load: Value = value
         def save(value: Value): Unit = { this.value = value }
     }
-    
+
     /* Concrete Cell object */
+    /* TODO: Handle float types */
     object Cell {
         def apply(i: Int): Cell = Cell(Num(i))
         val NULL = Cell(0)

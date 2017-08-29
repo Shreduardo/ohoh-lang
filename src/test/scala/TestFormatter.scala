@@ -1,4 +1,4 @@
-package luccs.proglang.p3a.scala
+package shredev.ohohlang.scala
 
 import org.scalatest.FunSuite
 import TestFixtures._
